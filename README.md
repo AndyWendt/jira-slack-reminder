@@ -1,2 +1,5 @@
-# jira-slack-reminder
-A JIRA Slack Reminders Bot
+# JIRA Slack Reminder
+
+## Deployment
+
+`serverless deploy --stage dev`
