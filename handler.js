@@ -44,10 +44,10 @@ module.exports.run = (event, context) => {
           response.data.issues.forEach(function (issue) {
               let jiraUser = issue.fields.assignee.name;
               let slackUser = userMappings[jiraUser];
-              let ticketName = issue.key;
-              let ticketDescription = issue.fields.summary;
+              let ticketID = issue.key;
+              let ticketName = issue.fields.summary;
               let dueDate = issue.fields.duedate;
-              sendSlackReminder(slackUser, ticketName, ticketDescription, dueDate);
+              sendSlackReminder(slackUser, ticketName, ticketID, dueDate);
           });
       });
 };
@@ -55,7 +55,7 @@ module.exports.run = (event, context) => {
 function sendSlackReminder(slackUserToRemind, ticketName, ticketId, dueDate) {
     let channel = process.env.slackRemindersChannel;
     let token = process.env.slackAccessToken;
-    let message = `<@${slackUserToRemind}> This is a reminder that your ticket, ${ticketName} (${ticketId}), is due on ${dueDate}`;
+    let message = `<@${slackUserToRemind}> This is a reminder that your ticket, ${ticketName} (*${ticketId}*), is due on *${dueDate}*`;
 
 
     console.log(channel, token);
