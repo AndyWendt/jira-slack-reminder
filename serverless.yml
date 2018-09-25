@@ -4,6 +4,7 @@ provider:
   name: aws
   runtime: nodejs8.10
   region: us-west-2
+  environment: ${file(./env.json)}
 
 functions:
   cron:
@@ -16,3 +17,5 @@ functions:
 #    events:
 #      # Invoke Lambda function every 2nd minute from Mon-Fri
 #      - schedule: cron(0/2 * ? * MON-FRI *)
+
+# https://serverless.com/framework/docs/providers/aws/guide/variables/#referencing-s3-objects
