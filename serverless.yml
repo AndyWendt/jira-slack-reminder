@@ -10,12 +10,5 @@ functions:
   cron:
     handler: handler.run
     events:
-      # Invoke Lambda function every minute
-      - schedule: cron(0 10 * * MON-FRI *)c
-#  secondCron:
-#    handler: handler.run
-#    events:
-#      # Invoke Lambda function every 2nd minute from Mon-Fri
-#      - schedule: cron(0/2 * ? * MON-FRI *)
-
-# https://serverless.com/framework/docs/providers/aws/guide/variables/#referencing-s3-objects
+      # Invoke Lambda function every day at 1700 UTC
+      - schedule: cron(0 17 * * MON-FRI *)c
